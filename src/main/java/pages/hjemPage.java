@@ -5,8 +5,10 @@ import elements.elementsHjemPage;
 
 public class hjemPage {
     private elementsHjemPage elements;
+    private WebDriver driver;
 
     public hjemPage(WebDriver driver){
+        this.driver = driver;
         elements = new elementsHjemPage(driver);
     }
     

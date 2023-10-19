@@ -1,12 +1,16 @@
 package com.example;
 
+import org.openqa.selenium.WebDriver;
+
 import tests.reiseTest;
 
 
 public class App {
     public static void main(String[] args) {
-        reiseTest.testReiseResultat();
-        
+        reiseTest minReisetest = new reiseTest();
+        minReisetest.setUp();
+        minReisetest.testReiseResultat();
+        minReisetest.tearDown();
         /* 
         // Your main method code here
         WebDriver driver = driverFactory.open("incognito");

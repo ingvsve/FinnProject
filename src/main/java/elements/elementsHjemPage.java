@@ -25,7 +25,7 @@ public class elementsHjemPage {
     }
 
     public WebElement reiseElement(){
-        WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(30));
         return wait2.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='/reise']")));
     }
 

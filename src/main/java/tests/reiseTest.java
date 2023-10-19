@@ -5,22 +5,40 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import pages.hjemPage;
+import pages.loggInnPage;
 import pages.reisePage;
 import pages.reiseResultatPage;
-
+import utilities.driverFactory;
 
 public class reiseTest {
-    WebDriver driver;
+    private WebDriver driver;
+    private hjemPage hjem;
 
     @Before
-    public static void setup(){
-        
+    public void setUp() {
+        WebDriver driver = driverFactory.open("incognito");//loggInnTest.loggInn();
+        this.driver = driver;
+        hjem = new hjemPage(driver);
+    }
+
+    public reiseTest(){
+        hjem = new hjemPage(driver);
     }
 
     @Test
-    public static void testReiseResultat (){
-        WebDriver driver = loggInnTest.loggInn();
-        hjemPage.trykkReise(driver);
+    public void testReiseResultat (){
+        driver.get("https://www.finn.no/");
+        //hjemPage page = new hjemPage(driver);
+        hjem.godtaCookies(driver);
+        hjem.trykkLoggInn();
+
+        
+        loggInnPage.enterUsername(driver);
+        loggInnPage.enterPassword(driver);
+        loggInnPage.clickLoggInn(driver);
+        
+        hjem.trykkReise();
+
         reisePage.enterFlyFra(driver);
         reisePage.enterFlyTil(driver);
         reisePage.trykkUtreiseDato(driver);
@@ -39,7 +57,7 @@ public class reiseTest {
     }
 
     @After
-    public static void tearDown() {
-        //driver.quit();
+    public void tearDown() {
+        driver.quit();
     }
 }
