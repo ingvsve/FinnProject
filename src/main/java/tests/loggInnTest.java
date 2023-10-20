@@ -12,12 +12,13 @@ public class loggInnTest {
         WebDriver driver = driverFactory.open("incognito");
         driver.get("https://www.finn.no/");
         hjemPage hjem = new hjemPage(driver);
-        hjem.godtaCookies(driver);
+        hjem.godtaCookies();
         hjem.trykkLoggInn();
 
-        loggInnPage.enterUsername(driver);
-        loggInnPage.enterPassword(driver);
-        loggInnPage.clickLoggInn(driver);
+        loggInnPage loggInn = new loggInnPage(driver);
+        loggInn.enterUsername();
+        loggInn.enterPassword();
+        loggInn.clickLoggInn();
         return driver;
     }
 }

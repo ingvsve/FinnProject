@@ -4,8 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-import org.openqa.selenium.chrome.ChromeOptions;
-
 public class driverFactory {
     public static WebDriver open(String windowType){
         if (windowType.equals("incognito")){

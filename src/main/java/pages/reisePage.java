@@ -3,50 +3,58 @@ package pages;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
+import elements.elementsLoggInnPage;
 import elements.elementsReisePage;
 
 public class reisePage {
-    public static void enterFlyFra(WebDriver driver){
-        elementsReisePage.flyFraElement(driver).sendKeys("Oslo lufthavn Gardermoen");
+    private WebDriver driver;
+    private elementsReisePage elements;
+
+    public reisePage(WebDriver driver){
+        this.driver = driver;
+        elements = new elementsReisePage(driver);
+    }
+    public void enterFlyFra(){
+        elements.flyFraElement().sendKeys("Oslo lufthavn Gardermoen");
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        elementsReisePage.flyFraElement(driver).sendKeys(Keys.RETURN);
+        elements.flyFraElement().sendKeys(Keys.RETURN);
     }
 
-    public static void enterFlyTil(WebDriver driver){
-        elementsReisePage.flyTilElement(driver).sendKeys("Barcelona");
+    public void enterFlyTil(){
+        elements.flyTilElement().sendKeys("Barcelona");
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        elementsReisePage.flyTilElement(driver).sendKeys(Keys.RETURN);
+        elements.flyTilElement().sendKeys(Keys.RETURN);
     }
 
-    public static void trykkUtreiseDato(WebDriver driver){
-        elementsReisePage.utreiseDatoElement(driver).click();
+    public void trykkUtreiseDato(){
+        elements.utreiseDatoElement().click();
     }
     
-    public static void trykkNesteMåned(WebDriver driver){
-        elementsReisePage.nesteMånedElement(driver).click();
+    public  void trykkNesteMåned(){
+        elements.nesteMånedElement().click();
     }
 
-    public static void trykkTorsdag9November(WebDriver driver){
-        elementsReisePage.torsdag9NovemberElement(driver).click();
+    public void trykkTorsdag9November(){
+        elements.torsdag9NovemberElement().click();
     }
 
-    public static void trykkTirsdag14November(WebDriver driver){
-        elementsReisePage.tirsdag14NovemberElement(driver).click();
+    public void trykkTirsdag14November(){
+        elements.tirsdag14NovemberElement().click();
     }
 
-    public static void avKrysningHotel(WebDriver driver){
-        elementsReisePage.ankrysningHotelElement(driver).click();
+    public void avKrysningHotel(){
+        elements.ankrysningHotelElement().click();
     }
 
-    public static void trykkSøkeKnapp(WebDriver driver){
-        elementsReisePage.søkeKnappElement(driver).click();
+    public void trykkSøkeKnapp(){
+        elements.søkeKnappElement().click();
     }
 }

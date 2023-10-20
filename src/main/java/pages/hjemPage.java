@@ -12,10 +12,10 @@ public class hjemPage {
         elements = new elementsHjemPage(driver);
     }
     
-    public void godtaCookies(WebDriver driver){
-        driver.switchTo().frame(1);
+    public void godtaCookies(){
+        this.driver.switchTo().frame(1);
         elements.cookieWebElement().click();
-        driver.switchTo().defaultContent();
+        this.driver.switchTo().defaultContent();
     }
 
     public void trykkLoggInn (){

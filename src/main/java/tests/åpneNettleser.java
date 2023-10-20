@@ -10,7 +10,7 @@ public class åpneNettleser {
                 WebDriver driver = driverFactory.open("incognito");
                 driver.get("https://www.finn.no/");
                 hjemPage page = new hjemPage(driver);
-                page.godtaCookies(driver);
+                page.godtaCookies();
                 page.trykkLoggInn();
                 return driver;
         }

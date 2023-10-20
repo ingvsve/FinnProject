@@ -17,15 +17,15 @@ public class elementsHjemPage {
     }
 
     public WebElement cookieWebElement(){
-        return driver.findElement(By.xpath("//button[@title='Jeg forstår']"));
+        return this.driver.findElement(By.xpath("//button[@title='Jeg forstår']"));
     }
 
     public WebElement headerWebElement(){
-        return driver.findElement(By.xpath("//finn-topbar")).getShadowRoot().findElement(By.cssSelector("header > nav > a:nth-child(5)"));
+        return this.driver.findElement(By.xpath("//finn-topbar")).getShadowRoot().findElement(By.cssSelector("header > nav > a:nth-child(5)"));
     }
 
     public WebElement reiseElement(){
-        WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait2 = new WebDriverWait(this.driver, Duration.ofSeconds(30));
         return wait2.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='/reise']")));
     }
 

@@ -13,47 +13,47 @@ import utilities.driverFactory;
 public class reiseTest {
     private WebDriver driver;
     private hjemPage hjem;
+    private loggInnPage loggInn;
+    private reisePage reise;
+    private reiseResultatPage reiseResultat;
 
     @Before
     public void setUp() {
         WebDriver driver = driverFactory.open("incognito");//loggInnTest.loggInn();
         this.driver = driver;
-        hjem = new hjemPage(driver);
-    }
-
-    public reiseTest(){
-        hjem = new hjemPage(driver);
+        this.hjem = new hjemPage(driver);
+        this.loggInn = new loggInnPage(driver);
+        this.reise = new reisePage(driver);
+        this.reiseResultat = new reiseResultatPage(driver);
     }
 
     @Test
     public void testReiseResultat (){
         driver.get("https://www.finn.no/");
-        //hjemPage page = new hjemPage(driver);
-        hjem.godtaCookies(driver);
-        hjem.trykkLoggInn();
-
+        this.hjem.godtaCookies();
+        this.hjem.trykkLoggInn();
         
-        loggInnPage.enterUsername(driver);
-        loggInnPage.enterPassword(driver);
-        loggInnPage.clickLoggInn(driver);
+        this.loggInn.enterUsername();
+        this.loggInn.enterPassword();
+        this.loggInn.clickLoggInn();
         
-        hjem.trykkReise();
+        this.hjem.trykkReise();
 
-        reisePage.enterFlyFra(driver);
-        reisePage.enterFlyTil(driver);
-        reisePage.trykkUtreiseDato(driver);
-        reisePage.trykkNesteMåned(driver);
-        reisePage.trykkTorsdag9November(driver);
-        reisePage.trykkTirsdag14November(driver);
-        reisePage.avKrysningHotel(driver);
-        reisePage.trykkSøkeKnapp(driver);
-        reiseResultatPage.ventPåProgressBar(driver);
-        reiseResultatPage.trykkDirekte(driver);
-        reiseResultatPage.endreAvreiseStart(driver);
-        reiseResultatPage.endreAvreiseSlutt(driver);
-        reiseResultatPage.endreReisetid(driver);
-        reiseResultatPage.trykkLavpriskalender(driver);
-        reiseResultatPage.hentPriser(driver, "C:\\Users\\isvendsen\\projects\\FinnTraining\\travelResults.xlsx" ,"results");
+        this.reise.enterFlyFra();
+        this.reise.enterFlyTil();
+        this.reise.trykkUtreiseDato();
+        this.reise.trykkNesteMåned();
+        this.reise.trykkTorsdag9November();
+        this.reise.trykkTirsdag14November();
+        this.reise.avKrysningHotel();
+        this.reise.trykkSøkeKnapp();
+        this.reiseResultat.ventPåProgressBar();
+        this.reiseResultat.trykkLavpriskalender();
+        this.reiseResultat.hentPriser("C:\\Users\\isvendsen\\projects\\FinnTraining\\travelResults.xlsx" ,"results");
+        this.reiseResultat.trykkDirekte();
+        this.reiseResultat.endreAvreiseStart();
+        this.reiseResultat.endreAvreiseSlutt();
+        this.reiseResultat.endreReisetid();
     }
 
     @After

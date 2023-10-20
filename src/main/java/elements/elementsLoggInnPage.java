@@ -16,17 +16,17 @@ public class elementsLoggInnPage {
         this.driver = driver;
     }
 
-    public static WebElement usernameWebElement(WebDriver driver){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+    public WebElement usernameWebElement(){
+        WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(30));
         WebElement usernameElement = wait.until(ExpectedConditions.elementToBeClickable(By.id("username")));
         return usernameElement;
     }
     
-    public static WebElement passwordWebElement(WebDriver driver){
-        return driver.findElement(By.id("password"));
+    public WebElement passwordWebElement(){
+        return this.driver.findElement(By.id("password"));
     }
     
-    public static WebElement actionButtonWebElement(WebDriver driver){
-        return driver.findElement(By.id("ActionButton_0"));
+    public WebElement actionButtonWebElement(){
+        return this.driver.findElement(By.id("ActionButton_0"));
     }
 }

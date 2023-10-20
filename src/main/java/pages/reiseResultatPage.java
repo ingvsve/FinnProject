@@ -14,38 +14,49 @@ import elements.elementsReiseResultatPage;
 import utilities.Excel;
 
 public class reiseResultatPage {
-    public static void ventPåProgressBar(WebDriver driver){
+    private elementsReiseResultatPage elements;
+    private WebDriver driver;
+
+    public reiseResultatPage(WebDriver driver){
+        this.driver = driver;
+        this.elements = new elementsReiseResultatPage(driver);
+    }
+
+    public void ventPåProgressBar(){
         // Wait until progress bar disappears (aria-valuenow reaches 100 or element disappears)
-        WebDriverWait wait3 = new WebDriverWait(driver, Duration.ofSeconds(30));
-        By progressBarSelector = elementsReiseResultatPage.progressBarElement(driver);
+        WebDriverWait wait3 = new WebDriverWait(this.driver, Duration.ofSeconds(30));
+        By progressBarSelector = elements.progressBarElement();
         wait3.until(ExpectedConditions.or(ExpectedConditions.attributeToBe(progressBarSelector, "aria-valuenow", "100")
         ,ExpectedConditions.invisibilityOfElementLocated(progressBarSelector)));
     }
 
-    public static void trykkDirekte(WebDriver driver){
-        elementsReiseResultatPage.direkteElement(driver).click();
+    public void trykkDirekte(){
+        elements.direkteElement().click();
     }
 
-     public static void trykkLavpriskalender(WebDriver driver){
-        elementsReiseResultatPage.lavpriskalenderElement(driver).click();
+     public void trykkLavpriskalender(){
+        elements.lavpriskalenderElement().click();
     }
     
-    public static void hentPriser(WebDriver driver, String ExcelPath, String sheetName){
+    public void hentPriser(String ExcelPath, String sheetName){
         String data;
         for (int rowNumber=0; rowNumber<8; rowNumber++){
-            for (int columnNumber = 0; columnNumber<9; columnNumber++){
-                if ((columnNumber != 8) && (rowNumber != 0)){
-                    data = elementsReiseResultatPage.prisElement(driver, rowNumber, columnNumber).getText();
+            for (int columnNumber = 0; columnNumber<8; columnNumber++){
+                if ((columnNumber == 7) && (rowNumber == 0)){
+                    System.out.println("Blank field");
+                } else {
+                    data = elements.prisElement(rowNumber, columnNumber).getText();
                     Excel.writeData(ExcelPath, sheetName, rowNumber, columnNumber, data);
+                    // System.out.println("Value in row " + rowNumber + " and column: " + columnNumber);
                 }
             }
         }
         
     }
 
-    public static void endreAvreiseStart(WebDriver driver){
+    public void endreAvreiseStart(){
         String desiredTravelTimeStart = "08:00";
-        WebElement sliderTravelTimeStart = elementsReiseResultatPage.sliderAvreiseStart(driver);
+        WebElement sliderTravelTimeStart = elements.sliderAvreiseStart();
         String currentTimeStart = sliderTravelTimeStart.getAttribute("aria-valuetext").split(" ")[1];
         sliderTravelTimeStart.click();
         //Assert.assertEquals(desiredTravelTimeStart, currentTimeStart);
@@ -55,9 +66,9 @@ public class reiseResultatPage {
         }
     }
 
-    public static void endreAvreiseSlutt(WebDriver driver){
+    public void endreAvreiseSlutt(){
         String desiredTravelTimeSlutt = "12:00";
-        WebElement sliderTravelTimeSlutt = elementsReiseResultatPage.sliderAvreiseSlutt(driver);
+        WebElement sliderTravelTimeSlutt = elements.sliderAvreiseSlutt();
         String currentTimeSlutt = sliderTravelTimeSlutt.getAttribute("aria-valuetext").split(" ")[1];
         sliderTravelTimeSlutt.click();
         while (!desiredTravelTimeSlutt.equals(currentTimeSlutt)){
@@ -66,9 +77,9 @@ public class reiseResultatPage {
         }
     }
 
-    public static void endreReisetid(WebDriver driver){
+    public void endreReisetid(){
         int desiredTravelTime = 8;
-        WebElement sliderTravelTime = elementsReiseResultatPage.sliderReisetid(driver);
+        WebElement sliderTravelTime = elements.sliderReisetid();
         String maxTravelTime = sliderTravelTime.getAttribute("aria-valuetext");
         int TravelTime = Integer.parseInt(maxTravelTime.split(" ")[0]);
         for (int i = 0; i < (TravelTime-desiredTravelTime) ; i++ ){
