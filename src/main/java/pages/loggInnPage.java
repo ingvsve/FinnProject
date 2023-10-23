@@ -5,11 +5,9 @@ import elements.elementsLoggInnPage;
 import org.openqa.selenium.WebDriver;
 
 public class loggInnPage{
-    private WebDriver driver;
     private elementsLoggInnPage elements;
 
     public loggInnPage(WebDriver driver){
-        this.driver = driver;
         elements = new elementsLoggInnPage(driver);
     }
 

@@ -14,7 +14,6 @@ public class elementsReiseResultatPage {
 
     public By progressBarElement(){
         return By.xpath("//div[@role='progressbar']");
-
     }    
 
     public WebElement direkteElement(){

@@ -3,15 +3,12 @@ package pages;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-import elements.elementsLoggInnPage;
 import elements.elementsReisePage;
 
 public class reisePage {
-    private WebDriver driver;
     private elementsReisePage elements;
 
     public reisePage(WebDriver driver){
-        this.driver = driver;
         elements = new elementsReisePage(driver);
     }
     public void enterFlyFra(){
