@@ -22,4 +22,6 @@ public class loggInnPage{
     public void clickLoggInn(){
         elements.actionButtonWebElement().click();
     }
+
+
 }

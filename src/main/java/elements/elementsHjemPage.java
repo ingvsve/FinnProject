@@ -25,9 +25,12 @@ public class elementsHjemPage {
     }
 
     public WebElement reiseElement(){
-        WebDriverWait wait2 = new WebDriverWait(this.driver, Duration.ofSeconds(30));
-        return wait2.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='/reise']")));
+        WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(30));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='/reise']")));
     }
 
-    //eiendom
+    public WebElement eiendomElement(){
+        WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(30));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='/realestate/browse.html']")));
+    }
 }

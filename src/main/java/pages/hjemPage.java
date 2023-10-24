@@ -26,7 +26,7 @@ public class hjemPage {
         elements.reiseElement().click();   
     }
 
-    //public static void trykkEiendom (WebDriver driver){
-    //    elementsHjemPage.eiendomElement(driver).click();   
-    //}    
+    public void trykkEiendom (){
+        elements.eiendomElement().click();   
+    }    
 }
