@@ -12,7 +12,7 @@ public class App {
         eiendomsTest minEiendomsTest = new eiendomsTest();
         minEiendomsTest.setUp();
         minEiendomsTest.eiendom();
-        //minEiendomsTest.tearDown();
+        minEiendomsTest.tearDown();
         
         /*reiseTest minReisetest = new reiseTest();
         minReisetest.setUp();
