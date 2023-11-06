@@ -21,7 +21,9 @@ public class elementsHenteEiendomPage {
     }
     
     public WebElement adresseElement(){
-        return this.driver.findElement(By.xpath("//span[@data-testid='object-address']"));
+        //return this.driver.findElement(By.xpath("//span[@data-testid='object-address']"));
+        return this.driver.findElement(By.xpath("/html/body/main/div[3]/section/div[1]/div[1]/section[1]/a/span"));
+        
     }
     
     public WebElement prisantydningElement(){

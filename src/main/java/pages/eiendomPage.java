@@ -54,18 +54,7 @@ public class eiendomPage {
         elements.kartSøkTekstfeltElement().sendKeys(sted); // Keys.ARROW_DOWN, Keys.ENTER);
         new Actions(driver).moveToElement(elements.byttTilUtsnittElement()).moveByOffset(0, 12).click().perform();
         new Actions(driver).moveToElement(elements.byttTilUtsnittElement()).moveByOffset(0, 12).click().perform();
-        //JavascriptExecutor js = (JavascriptExecutor) this.driver;
-        //js.executeScript("document.getElementById('map-search-input').setAttribute('aria-expanded', 'true')");
-        //elements.kartSøkTekstfeltElement().click();
-        //elements.kartSøkTekstfeltElement().sendKeys(Keys.ARROW_DOWN);
-        //elements.eiriksGateElement().click();
-        /*try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }*/
         elements.kartSøkTekstfeltElement().sendKeys(Keys.ARROW_DOWN);
-        //elements.eiriksGateElement().click();
         elements.kartSøkTekstfeltElement().sendKeys(Keys.ENTER);
     }
 
@@ -137,7 +126,6 @@ public class eiendomPage {
         boolean finnkodenFinnes = true;
         boolean leilighetSolgt = false;
         for (WebElement resultat:sokeresultater){
-            //leilighetSolgt = resultat.getAttribute("");
             try {
                 ((JavascriptExecutor)this.driver).executeScript("arguments[0].scrollIntoView(true);", resultat);
                 finnkode = resultat.getAttribute("id");
@@ -151,6 +139,7 @@ public class eiendomPage {
             }
             
             finnkodenFinnes = Excel.erFinnkodenDer(ExcelPath, sheetName, finnkode, listeMedFinnkoder);
+            System.out.println("Finnkoden finnes: " + finnkodenFinnes);
             if (!finnkodenFinnes){
                 System.out.println("Skriver inn leilighet med finnkode: " + finnkode);
                 ((JavascriptExecutor)this.driver).executeScript("window.open('"+eiendomlenke+"')");
@@ -159,18 +148,17 @@ public class eiendomPage {
                 this.driver.switchTo().window(newTabHandle);
                 henteEiendom = new henteEiendomPage(this.driver);
                 henteEiendom.boligSolgt();
-                System.out.println("Er leiligheten solgt? " + henteEiendom.solgt);
                 if (!henteEiendom.solgt){
-                    henteEiendom.henteAdresse();
                     henteEiendom.hentePrisantydning();
+                    henteEiendom.henteAdresse();
                     henteEiendom.henteTotalpris();
                     henteEiendom.henteOmkostninger();
                     henteEiendom.henteFelleskostnader();
                     henteEiendom.henteByggeaar();
                     henteEiendom.henteEierform();
                     henteEiendom.henteBruksareal();
-                    henteEiendom.henteEnergimerkingFarge();
-                    henteEiendom.henteEnergimerkingBokstav();
+                    //henteEiendom.henteEnergimerkingFarge();
+                    //henteEiendom.henteEnergimerkingBokstav();
                     henteEiendom.henteEtasje();
                     henteEiendom.henteBildeLink();
                     rowNumber ++;

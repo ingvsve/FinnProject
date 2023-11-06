@@ -26,7 +26,8 @@ public class eiendomsTest{
     
     @Before
     public void setUp() {
-        WebDriver driver = driverFactory.open("incognito");//loggInnTest.loggInn();
+        WebDriver driver = driverFactory.open("chrome");
+        //WebDriver driver = driverFactory.open("firefox");
         this.driver = driver;
         this.hjem = new hjemPage(driver);
         //this.loggInn = new loggInnPage(driver);
@@ -37,7 +38,7 @@ public class eiendomsTest{
 
     @Test
     public void eiendom(){
-        driver.get("https://www.finn.no/");
+        this.driver.get("https://www.finn.no/");
         this.driver.manage().window().maximize();
         this.hjem.godtaCookies();
         this.hjem.trykkEiendom();

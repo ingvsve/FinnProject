@@ -103,7 +103,7 @@ public class henteEiendomPage {
         // Finne ut hvilken rad som er den neste ledige int antallEiendommer
 
         String[] informasjon = {finnkode, this.adresse, this.prisantydning, this.totalpris, this.omkostninger, this.felleskostnader, this.byggeaar, this.eierform, 
-            this.bruksareal, this.energimerkingFarge, this.energimerkingBokstav, this.etasje};
+            this.bruksareal, "Blå", "X", this.etasje};
         for (int columnNumber=0; columnNumber<informasjon.length; columnNumber++){
             Excel.writeData(ExcelPath, sheetName, rowNumber, columnNumber, informasjon[columnNumber]);
             }

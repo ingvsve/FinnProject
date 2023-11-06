@@ -113,7 +113,6 @@ public class Excel {
         try{
             FileInputStream file = new FileInputStream(new File(ExcelPath));
             ArrayList<String> listeMedFinnkoder = new ArrayList<String>();
-            
             XSSFWorkbook wb = new XSSFWorkbook(file);
             XSSFSheet sheet = wb.getSheet(sheetName);
             int rowNumber = 1;

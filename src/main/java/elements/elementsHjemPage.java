@@ -3,6 +3,7 @@ package elements;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -16,7 +17,9 @@ public class elementsHjemPage {
         this.driver = driver;
     }
 
-    public WebElement cookieWebElement(){
+    public WebElement cookieWebElement(){        
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
         return this.driver.findElement(By.xpath("//button[@title='Jeg forstår']"));
     }
 
